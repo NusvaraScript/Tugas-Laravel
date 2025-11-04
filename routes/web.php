@@ -20,8 +20,9 @@ use App\Http\Controllers\KelasController;
 // Route::get('siswa/{id}', [SiswaController::class, 'detail']);
 Route::resource('siswa', SiswaController::class);
 
-Route::get('kelas', [KelasController::class, 'index']);
-Route::get('kelas/{id}', [KelasController::class, 'detail']);
+// Route::get('kelas', [KelasController::class, 'index']);
+// Route::get('kelas/{id}', [KelasController::class, 'detail']);
+Route::resource('kelas', KelasController::class);
 
 // Route::get('/guru/{id}', function($id) {
 //     return "<h1>Saya Guru ID $id</h1>";

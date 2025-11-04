@@ -1,5 +1,6 @@
 @extends('layout.index')
 @section('konten')
+    <a href="/kelas/create" class="btn btn-primary">+ Tambah Data Kelas</a>
     <table class="table">
         <thead>
             <tr>
