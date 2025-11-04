@@ -16,8 +16,9 @@ use App\Http\Controllers\KelasController;
 //     return "<h1>SAYA SISWA ID $id DENGAN NAMA $nama</h1>";
 // })->where('id', '[0-9]+',)->where('nama', '[A-Za-z]+');
 
-Route::get('siswa', [SiswaController::class, 'index']);
-Route::get('siswa/{id}', [SiswaController::class, 'detail']);
+// Route::get('siswa', [SiswaController::class, 'index']);
+// Route::get('siswa/{id}', [SiswaController::class, 'detail']);
+Route::resource('siswa', SiswaController::class);
 
 Route::get('kelas', [KelasController::class, 'index']);
 Route::get('kelas/{id}', [KelasController::class, 'detail']);
