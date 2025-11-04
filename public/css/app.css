@@ -1,0 +1,157 @@
+/* Variable */
+:root {
+    --bg-dark: hsl(0 0% 0%);
+    --bg: hsl(0 0% 5%);
+    --bg-light: hsl(0 0% 10%);
+    --ff: 'Segue UI', Arial, sans-serif;
+    --ff2: "Fira Sans", serif;
+    --spacing1: 4px;
+    --spacing2: 8px;
+    --spacing3: 16px;
+    --spacing4: 20px;
+    --spacing5: 40px;
+    --spacing6: 80px;
+    --spacing7: 160px;
+    --text: hsl(0 0% 95%);
+    --text-muted: hsl(0 0% 70%);
+    --border: hsl(0 0% 30%);
+    --gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
+    --gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
+    --highlight: hsl(0 0% 60%);
+    --border-card: solid 1px var(--border);
+    --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
+}
+/* Global Styles */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    text-wrap: balance;
+    font-family: var(--ff);
+    background: var(--bg-dark);
+    color: var(--text-muted);
+}
+.btn, button {
+    background: var(--bg-light);
+    padding: var(--spacing2) var(--spacing4);
+    color: var(--text);
+    font-weight: 700;
+    border-radius: var(--spacing2);
+    margin-top: var(--spacing4);
+    border: var(--border-card);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+.btn:hover, button:hover {
+    background: var(--gradient);
+}
+img {
+    width: 100%;
+}
+h1, h2, h3, h4, h5 {
+    color: var(--text);
+    margin-bottom: var(--spacing2);
+    font-family: var(--ff);
+    font-weight: 700;
+}
+p {
+    color: var(--text-muted);
+    margin-bottom: var(--spacing3);
+    font-family: var(--ff);
+}
+a {
+    color: var(--text-muted);
+    text-decoration: underline;
+}
+a:hover {
+    color: var(--text)
+}
+section {
+    min-height: 100vh;
+}
+.card {
+    background: var(--gradient);
+    padding: var(--spacing4);
+    border-radius: var(--spacing2);
+    border: var(--border-card);
+    border-top: solid 1px var(--highlight);
+    box-shadow: var(--shadow);
+}
+.card:hover {
+    background: var(--gradient-hover)
+}
+.input-box {
+    background: var(--bg-light);
+    padding: var(--spacing2) var(--spacing3);
+    color: var(--text);
+    border-radius: var(--spacing2);
+    margin-top: var(--spacing4);
+    border: var(--border-card);
+    box-shadow: var(--shadow);
+}
+.input-box:hover {
+    border: solid 1px var(--bg-dark)
+}
+.text-center {
+    text-align: center;
+}
+.hidden {
+    display: none;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing4);
+    flex-wrap: wrap;
+}
+.reverse {
+    flex-direction: reverse;
+}
+.p-1 {
+    padding: var(--spacing1) 0;
+}
+.p-2 {
+    padding: var(--spacing2) 0;
+}
+.p-3 {
+    padding: var(--spacing3) 0;
+}
+.p-4 {
+    padding: var(--spacing4) 0;
+}
+.p-5 {
+    padding: var(--spacing5) 0;
+}
+.p-6 {
+    padding: var(--spacing6) 0;
+}
+.p-7 {
+    padding: var(--spacing7) 0;
+}
+.m-1 {
+    margin: var(--spacing1) auto;
+}
+.m-2 {
+    margin: var(--spacing2) auto;
+}
+.m-3 {
+    margin: var(--spacing3) auto;
+}
+.m-4 {
+    margin: var(--spacing4) auto;
+}
+.m-5 {
+    margin: var(--spacing5) auto;
+}
+.m-6 {
+    margin: var(--spacing6) auto;
+}
+.m-7 {
+    margin: var(--spacing7) auto;
+}
