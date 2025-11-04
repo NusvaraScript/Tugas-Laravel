@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HalamanController;
+use App\Http\Controllers\KelasController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -18,6 +19,9 @@ use App\Http\Controllers\HalamanController;
 Route::get('siswa', [SiswaController::class, 'index']);
 Route::get('siswa/{id}', [SiswaController::class, 'detail']);
 
+Route::get('kelas', [KelasController::class, 'index']);
+Route::get('kelas/{id}', [KelasController::class, 'detail']);
+
 // Route::get('/guru/{id}', function($id) {
 //     return "<h1>Saya Guru ID $id</h1>";
 // })->where('id', '[0-9]+');
@@ -30,4 +34,3 @@ Route::get('siswa/{id}', [SiswaController::class, 'detail']);
 Route::get('/', [HalamanController::class, 'index']);
 Route::get('/tentang', [HalamanController::class, 'tentang']);
 Route::get('/kontak', [HalamanController::class, 'kontak']);
-?>
