@@ -108,6 +108,6 @@ class KelasController extends Controller
     {
         //
         kelas::where('id', $id)->delete();
-        return redirect('kelas')->with('success', 'Data Berhasil Dihapus!')
+        return redirect('kelas')->with('success', 'Data Berhasil Dihapus!');
     }
 }

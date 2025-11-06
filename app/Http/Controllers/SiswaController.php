@@ -105,6 +105,6 @@ class SiswaController extends Controller
         //
         
         siswa::where('nis', $id)->delete();
-        return redirect('siswa')->with('success', 'Data Berhasil Dihapus!')
+        return redirect('siswa')->with('success', 'Data Berhasil Dihapus!');
     }
 }
