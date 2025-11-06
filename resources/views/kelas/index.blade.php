@@ -18,7 +18,15 @@
                     <td>{{ $item->nama_kelas }}</td>
                     <td>{{ $item->walikelas }}</td>
                     <td>{{ $item->jumlah_siswa }}</td>
-                    <td><a href="{{ url('/kelas/' . $item->id) }}" class="btn btn-secondary btn-sm">Detail</a></td>
+                    <td>
+                        <a href="{{ url('/kelas/' . $item->id) }}" class="btn btn-secondary btn-sm">Detail</a>
+                        <a href="{{ url('/kelas/' . $item->id . "/edit") }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form onsubmit="return confirm('Apakah yakin data akan dihapus?')" class="d-inline" action="{{ '/kelas/' . $item->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <buttton class="btn btn-danger btn-sm">Hapus</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

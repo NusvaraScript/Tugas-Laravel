@@ -17,7 +17,15 @@
                     <td>{{ $item->nis }}</td>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->alamat }}</td>
-                    <td><a href="{{ url('/siswa/' . $item->nis) }}" class="btn btn-secondary btn-sm">Detail</a></td>
+                    <td>
+                        <a href="{{ url('/siswa/' . $item->nis) }}" class="btn btn-secondary btn-sm">Detail</a>
+                        <a href="{{ url('/siswa/' . $item->nis . "/edit/") }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form class="d-inline" action="{{ '/siswa/' . $item->nis }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <buttton class="btn btn-danger btn-sm">Hapus</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

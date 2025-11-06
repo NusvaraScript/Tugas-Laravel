@@ -19,10 +19,13 @@ use App\Http\Controllers\KelasController;
 // Route::get('siswa', [SiswaController::class, 'index']);
 // Route::get('siswa/{id}', [SiswaController::class, 'detail']);
 Route::resource('siswa', SiswaController::class);
+Route::put('siswa/{id}', [SiswaController::class, 'update']);
+
 
 // Route::get('kelas', [KelasController::class, 'index']);
 // Route::get('kelas/{id}', [KelasController::class, 'detail']);
 Route::resource('kelas', KelasController::class);
+Route::put('kelas/{id}', [KelasController::class, 'update']);
 
 // Route::get('/guru/{id}', function($id) {
 //     return "<h1>Saya Guru ID $id</h1>";

@@ -72,6 +72,8 @@ class KelasController extends Controller
     public function edit(string $id)
     {
         //
+        $data = kelas::where('id', $id)->first();
+        return view('kelas/edit')->with('data', $data);
     }
 
     /**
@@ -80,6 +82,23 @@ class KelasController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'nama'=>'required',
+            'wali'=>'required',
+            'jumlah'=>'required|numeric',
+        ],[
+            'nama.required'=>'Kolom Nama Kelas wajib diisi!',
+            'wali.required'=>'Kolom Nama Wali Kelas wajib diisi dengan angka!',
+            'jumlah.required'=>'Kolom Jumlah Siswa wajib diisi!',
+            'jumlah.numeric'=>'Kolom Jumlah Siswa wajib diisi dengan nomor!',
+        ]);
+        $data=[
+            'nama_kelas'=>$request->input('nama'),
+            'walikelas'=>$request->input('wali'),
+            'jumlah_siswa'=>$request->input('jumlah'),
+        ];
+        kelas::where('id', $id)->update($data);
+        return redirect('kelas')->with('success', 'Data Berhasil Diupdate!');
     }
 
     /**
@@ -88,5 +107,7 @@ class KelasController extends Controller
     public function destroy(string $id)
     {
         //
+        kelas::where('id', $id)->delete();
+        return redirect('kelas')->with('success', 'Data Berhasil Dihapus!')
     }
 }

@@ -72,6 +72,8 @@ class SiswaController extends Controller
     public function edit(string $id)
     {
         //
+        $data = siswa::where('nis', $id)->first();
+        return view('siswa/edit')->with('data', $data);
     }
 
     /**
@@ -80,6 +82,19 @@ class SiswaController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'nama'=>'required',
+            'alamat'=>'required',
+        ],[
+            'nama.required'=>'Kolom Nama wajib diisi!',
+            'alamat.required'=>'Kolom Alamat wajib diisi!',
+        ]);
+        $data=[
+            'nama'=>$request->input('nama'),
+            'alamat'=>$request->input('alamat'),
+        ];
+        siswa::where('nis', $id)->update($data);
+        return redirect('siswa')->with('success', 'Data Berhasil Diupdate!');
     }
 
     /**
@@ -88,5 +103,8 @@ class SiswaController extends Controller
     public function destroy(string $id)
     {
         //
+        
+        siswa::where('nis', $id)->delete();
+        return redirect('siswa')->with('success', 'Data Berhasil Dihapus!')
     }
 }
