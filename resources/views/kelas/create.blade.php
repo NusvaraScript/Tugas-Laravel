@@ -1,6 +1,6 @@
 @extends('layout.index')
 @section('konten')
-    <form method="POST" action="/kelas">
+    <form method="POST" action="/kelas" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="nama" class="form-label">Nama Kelas</label>
@@ -13,6 +13,10 @@
         <div class="mb-3">
             <label for="jumlah" class="form-label">Jumlah Siswa</label>
             <input type="text" id="jumlah" name="jumlah" class="form-control" value="{{ Session::get('nama') }}">
+        </div>
+        <div class="mb-3">
+            <label for="foto" class="form-label">Foto</label>
+            <input type="file" id="foto" name="foto" class="form-control">
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">SIMPAN</button>    

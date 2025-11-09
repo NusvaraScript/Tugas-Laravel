@@ -41,16 +41,26 @@ class KelasController extends Controller
             'nama'=>'required',
             'wali'=>'required',
             'jumlah'=>'required|numeric',
+            'foto'=>'required|mimes:jpeg,jpg,png,gif',
         ],[
             'nama.required'=>'Kolom Nama Kelas wajib diisi!',
             'wali.required'=>'Kolom Nama Wali Kelas wajib diisi dengan angka!',
             'jumlah.required'=>'Kolom Jumlah Siswa wajib diisi!',
             'jumlah.numeric'=>'Kolom Jumlah Siswa wajib diisi dengan nomor!',
+            'foto.numeric'=>'Kolom Foto wajib diisi!',
+            'foto.mimes'=>'Foto yang diperbolehkan hanya JPEG, JPG, PNG, atau GIF!',
         ]);
+
+        $foto_file = $request->file('foto');
+        $foto_ekstensi = $foto_file->extension();
+        $foto_nama = date('ymdhis') . "." . $foto_ekstensi;
+        $foto_file->move(public_path('foto'), $foto_nama);
+
         $data=[
             'nama_kelas'=>$request->input('nama'),
             'walikelas'=>$request->input('wali'),
             'jumlah_siswa'=>$request->input('jumlah'),
+            'foto'=>$foto_nama
         ];
         kelas::create($data);
         return redirect('kelas')->with('success', 'Data Berhasil Disimpan!');

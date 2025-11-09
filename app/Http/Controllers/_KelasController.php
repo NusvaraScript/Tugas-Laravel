@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\kelas;
 
-class KelasController_ extends Controller
+class _KelasController extends Controller
 {
     //
     function index() {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\siswa;
 
-class SiswaController_ extends Controller
+class _SiswaController extends Controller
 {
     function index() {
         // return "<h1>SAYA SISWA dari controller</h1>";

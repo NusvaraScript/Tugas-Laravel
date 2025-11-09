@@ -9,5 +9,9 @@
         <p>
             <b>Alamat: </b>{{$data -> alamat}}
         </p>
+        <p>
+            <b>Foto: </b>
+            <img style="max-width:50px; max-height:50px" src="{{ file_exists(public_path('foto/' . $data->foto)) && $data->foto ? url('foto') . '/' . $data->foto : url('foto/no-photo.jpeg') }}">
+        </p>
     </div>
 @endsection

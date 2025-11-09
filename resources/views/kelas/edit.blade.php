@@ -16,7 +16,11 @@
         </div>
         <div class="mb-3">
             <label for="jumlah" class="form-label">Jumlah Siswa</label>
-            <input type="text" id="jumlah" name="jumlah" class="form-control" value="{{ $data->jumlah_siswa }}">
+            <textarea type="text" id="jumlah" name="jumlah" class="form-control">{{ $data->alamat }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="foto" class="form-label">Foto</label>
+            <input type="file" id="foto" name="foto" class="form-control" value="{{ $data->foto }}">
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">UPDATE</button>    

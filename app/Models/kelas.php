@@ -8,5 +8,5 @@ class kelas extends Model
 {
     //
     protected $table = 'kelas';
-    protected $fillable = ['nama_kelas', 'walikelas', 'jumlah_siswa'];
+    protected $fillable = ['nama_kelas', 'walikelas', 'jumlah_siswa', 'foto'];
 }

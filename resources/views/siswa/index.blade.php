@@ -4,6 +4,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>Foto</th>
                 <th>NIS</th>
                 <th>Nama</th>
                 <th>Alamat</th>
@@ -14,6 +15,11 @@
             @foreach($data as $item)
                 <tr>
 
+                    <td>
+                        @if ($item->foto)
+                            <img style="max-width:50px; max-height:50px" src="{{ url('foto') . '/' . $item->foto }}">
+                        @endif
+                    </td>
                     <td>{{ $item->nis }}</td>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->alamat }}</td>

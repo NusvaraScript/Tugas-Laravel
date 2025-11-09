@@ -41,16 +41,27 @@ class SiswaController extends Controller
             'nis'=>'required|numeric',
             'nama'=>'required',
             'alamat'=>'required',
+            'foto'=>'required|mimes:jpeg,jpg,png,gif',
         ],[
             'nis.required'=>'Kolom NIS wajib diisi!',
             'nis.numeric'=>'Kolom NIS wajib diisi dengan angka!',
             'nama.required'=>'Kolom Nama wajib diisi!',
             'alamat.required'=>'Kolom Alamat wajib diisi!',
+            'foto.required'=>'Kolom Foto wajib diisi!',
+            'foto.mimes'=>'Foto yang diperbolehkan hanya JPEG, JPG, PNG, atau GIF!',
         ]);
+
+        $foto_file = $request->file('foto');
+        $foto_ekstensi = $foto_file->extension();
+        $foto_nama = date('ymdhis') . "." . $foto_ekstensi;
+
+        $foto_file->move(public_path('foto'), $foto_nama);
+
         $data=[
             'nis'=>$request->input('nis'),
             'nama'=>$request->input('nama'),
             'alamat'=>$request->input('alamat'),
+            'foto'=>$foto_nama,
         ];
         siswa::create($data);
         return redirect('siswa')->with('success', 'Data Berhasil Disimpan!');
