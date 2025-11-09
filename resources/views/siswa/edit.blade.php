@@ -23,6 +23,7 @@
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">UPDATE</button>    
+            <a href="/siswa" class="btn btn-secondary">KEMBALI</a>  
         </div>
     </form>
 @endsection

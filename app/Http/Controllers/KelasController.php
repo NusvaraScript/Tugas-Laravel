@@ -42,7 +42,7 @@ class KelasController extends Controller
             'nama'=>'required',
             'wali'=>'required',
             'jumlah'=>'required|numeric',
-            'foto'=>'required|mimes:jpeg,jpg,png,gif',
+            'foto'=>'required|image|mimes:jpeg,jpg,jpe,jfif,png,gif',
         ],[
             'nama.required'=>'Kolom Nama Kelas wajib diisi!',
             'wali.required'=>'Kolom Nama Wali Kelas wajib diisi dengan angka!',
@@ -97,7 +97,7 @@ class KelasController extends Controller
             'nama'=>'required',
             'wali'=>'required',
             'jumlah'=>'required|numeric',
-            'foto'=> 'mimes:jpeg,jpg,png,gif',
+            'foto'=>'mimes:jpeg,jpg,png,gif',
         ],[
             'nama.required'=>'Kolom Nama Kelas wajib diisi!',
             'wali.required'=>'Kolom Nama Wali Kelas wajib diisi dengan angka!',
@@ -118,7 +118,7 @@ class KelasController extends Controller
             $foto_file->move(public_path('foto'), $foto_nama);
             
             // Hapus foto lama jika ada
-            $data_foto = kelas::where('nis', $id)->first();
+            $data_foto = kelas::where('id', $id)->first();
             File::delete(public_path('foto') . '/' . $data_foto->foto);
             
             $data['foto'] = $foto_nama;

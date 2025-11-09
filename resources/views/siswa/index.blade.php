@@ -26,10 +26,10 @@
                     <td>
                         <a href="{{ url('/siswa/' . $item->nis) }}" class="btn btn-secondary btn-sm">Detail</a>
                         <a href="{{ url('/siswa/' . $item->nis . "/edit/") }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form class="d-inline" action="{{ '/siswa/' . $item->nis }}" method="POST">
+                        <form onsubmit="return confirm('Apakah yakin data akan dihapus?')" class="d-inline" action="{{ '/siswa/' . $item->nis }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <buttton class="btn btn-danger btn-sm">Hapus</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                         </form>
                     </td>
                 </tr>

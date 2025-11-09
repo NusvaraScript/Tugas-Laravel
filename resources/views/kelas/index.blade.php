@@ -30,7 +30,7 @@
                         <form onsubmit="return confirm('Apakah yakin data akan dihapus?')" class="d-inline" action="{{ '/kelas/' . $item->id }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <buttton class="btn btn-danger btn-sm">Hapus</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                         </form>
                     </td>
                 </tr>
