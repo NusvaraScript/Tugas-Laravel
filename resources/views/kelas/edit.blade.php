@@ -1,6 +1,6 @@
 @extends('layout.index')
 @section('konten')
-    <form method="POST" action="{{ '/kelas/' . $data->id }}">
+    <form method="POST" action="{{ '/kelas/' . $data->id }}" enctype="multipart/form-data">
         @csrf
         @method('put')
         <div>
