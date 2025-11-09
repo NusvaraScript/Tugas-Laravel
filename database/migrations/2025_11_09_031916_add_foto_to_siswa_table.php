@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('siswa', function (Blueprint $table) {
             //
-            $table->string('foto')->nullable;
+            $table->string('foto')->nullable();
         });
     }
 
