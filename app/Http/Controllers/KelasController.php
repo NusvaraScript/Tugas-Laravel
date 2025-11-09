@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\kelas;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\File;
 
 class KelasController extends Controller
 {
@@ -47,7 +48,7 @@ class KelasController extends Controller
             'wali.required'=>'Kolom Nama Wali Kelas wajib diisi dengan angka!',
             'jumlah.required'=>'Kolom Jumlah Siswa wajib diisi!',
             'jumlah.numeric'=>'Kolom Jumlah Siswa wajib diisi dengan nomor!',
-            'foto.numeric'=>'Kolom Foto wajib diisi!',
+            'foto.required'=>'Kolom Foto wajib diisi!',
             'foto.mimes'=>'Foto yang diperbolehkan hanya JPEG, JPG, PNG, atau GIF!',
         ]);
 
@@ -96,17 +97,33 @@ class KelasController extends Controller
             'nama'=>'required',
             'wali'=>'required',
             'jumlah'=>'required|numeric',
+            'foto'=> 'mimes:jpeg,jpg,png,gif',
         ],[
             'nama.required'=>'Kolom Nama Kelas wajib diisi!',
             'wali.required'=>'Kolom Nama Wali Kelas wajib diisi dengan angka!',
             'jumlah.required'=>'Kolom Jumlah Siswa wajib diisi!',
             'jumlah.numeric'=>'Kolom Jumlah Siswa wajib diisi dengan nomor!',
+            'foto.mimes'=>'Foto yang diperbolehkan hanya JPEG, JPG, PNG, atau GIF!',
         ]);
         $data=[
             'nama_kelas'=>$request->input('nama'),
             'walikelas'=>$request->input('wali'),
             'jumlah_siswa'=>$request->input('jumlah'),
         ];
+
+        if ($request->hasFile('foto')) {
+            $foto_file = $request->file('foto');
+            $foto_ekstensi = $foto_file->extension();
+            $foto_nama = date('ymdhis') . "." . $foto_ekstensi;
+            $foto_file->move(public_path('foto'), $foto_nama);
+            
+            // Hapus foto lama jika ada
+            $data_foto = kelas::where('nis', $id)->first();
+            File::delete(public_path('foto') . '/' . $data_foto->foto);
+            
+            $data['foto'] = $foto_nama;
+        }
+
         kelas::where('id', $id)->update($data);
         return redirect('kelas')->with('success', 'Data Berhasil Diupdate!');
     }
@@ -117,6 +134,8 @@ class KelasController extends Controller
     public function destroy(string $id)
     {
         //
+        $data = kelas::where('id', $id)->first();
+        File::delete(public_path('foto/' . $data->foto));
         kelas::where('id', $id)->delete();
         return redirect('kelas')->with('success', 'Data Berhasil Dihapus!');
     }

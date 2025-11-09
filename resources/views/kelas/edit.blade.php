@@ -16,11 +16,14 @@
         </div>
         <div class="mb-3">
             <label for="jumlah" class="form-label">Jumlah Siswa</label>
-            <textarea type="text" id="jumlah" name="jumlah" class="form-control">{{ $data->alamat }}</textarea>
+            <input type="text" id="jumlah" name="jumlah" class="form-control" value="{{ $data->jumlah_siswa }}">
+        </div>
+        <div class="mb-3">
+            <img style="max-width:100px; max-height:100px" src="{{  file_exists(public_path('foto/' . $data->foto)) && $data->foto ? url('foto') . '/' . $data->foto : url('foto/no-photo.png')  }}">    
         </div>
         <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
-            <input type="file" id="foto" name="foto" class="form-control" value="{{ $data->foto }}">
+            <input type="file" id="foto" name="foto" class="form-control">
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">UPDATE</button>    

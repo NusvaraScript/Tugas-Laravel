@@ -15,8 +15,11 @@
             <textarea type="text" id="alamat" name="alamat" class="form-control">{{ $data->alamat }}</textarea>
         </div>
         <div class="mb-3">
+            <img style="max-width:50px; max-height:50px" src="{{  file_exists(public_path('foto/' . $data->foto)) && $data->foto ? url('foto') . '/' . $data->foto : url('foto/no-photo.png')  }}">    
+        </div>
+        <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
-            <input type="file" id="foto" name="foto" class="form-control" value="{{ $data->foto }}">
+            <input type="file" id="foto" name="foto" class="form-control">
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">UPDATE</button>    

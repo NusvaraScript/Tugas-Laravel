@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\siswa;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\File;
 
 class SiswaController extends Controller
 {
@@ -96,14 +97,31 @@ class SiswaController extends Controller
         $request->validate([
             'nama'=>'required',
             'alamat'=>'required',
+            'foto'=>'mimes:jpeg,jpg,png,gif',
         ],[
             'nama.required'=>'Kolom Nama wajib diisi!',
             'alamat.required'=>'Kolom Alamat wajib diisi!',
+            'foto.mimes'=>'Foto yang diperbolehkan hanya JPEG, JPG, PNG, atau GIF!',
         ]);
-        $data=[
+
+        $data = [
             'nama'=>$request->input('nama'),
             'alamat'=>$request->input('alamat'),
         ];
+
+        if ($request->hasFile('foto')) {
+            $foto_file = $request->file('foto');
+            $foto_ekstensi = $foto_file->extension();
+            $foto_nama = date('ymdhis') . "." . $foto_ekstensi;
+            $foto_file->move(public_path('foto'), $foto_nama);
+            
+            // Hapus foto lama jika ada
+            $data_foto = siswa::where('nis', $id)->first();
+            File::delete(public_path('foto') . '/' . $data_foto->foto);
+            
+            $data['foto'] = $foto_nama;
+        }
+        
         siswa::where('nis', $id)->update($data);
         return redirect('siswa')->with('success', 'Data Berhasil Diupdate!');
     }
@@ -114,7 +132,9 @@ class SiswaController extends Controller
     public function destroy(string $id)
     {
         //
-        
+        $data = siswa::where('nis', $id)->first();
+        File::delete(public_path('foto/' . $data->foto));
+
         siswa::where('nis', $id)->delete();
         return redirect('siswa')->with('success', 'Data Berhasil Dihapus!');
     }
