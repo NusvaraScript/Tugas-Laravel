@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\isLogin;
+use App\Http\Middleware\isAktif;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,5 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Paginator::useBootstrapFive();
+        Route::aliasMiddleware('isLogin', isLogin::class);
+        Route::aliasMiddleware('isAktif', isAktif::class);
     }
 }
