@@ -8,7 +8,7 @@
             <a href="/siswa" class="nav-link active" aria-current="page">Siswa</a>
         </li>
         <li class="nav-item">
-            <a href="/kelas" class="nav-link active" aria-current="page">Kelas</a>
+            <a href="/kelas" class="mx-2 nav-link active" aria-current="page">Kelas</a>
         </li>
         <li class="nav-item">
             <a href="/sesi/logout" class="nav-link">Logout</a>

@@ -4,6 +4,7 @@
     <div class="w-50 center border rounded px-3 py-3 mx-auto">
         <h1>LOGIN</h1>
         <form action="/sesi/login" method="POST">
+            @csrf
             <div class="mb-3">
                 <label class="form-label" for="email">Email</label>
                 <input class="form-control" type="email" name="email" value="{{ Session::get('email')}}">
