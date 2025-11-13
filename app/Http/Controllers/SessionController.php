@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class SessionController extends Controller
 {
@@ -41,7 +43,7 @@ class SessionController extends Controller
     }
 
     function register() {
-        return view(sesi/register);
+        return view('sesi/register');
     }
 
     function create(Request $request) {
@@ -66,13 +68,14 @@ class SessionController extends Controller
             'password'=>Hash::make($request->password),
         ];
 
+        User::create($data);
         $infologin = [
             'email'=>$request->email,
             'password'=>$request->password,
         ];
 
         if(Auth::attempt($infologin)){
-            return redirect('/siswa')->with('success',Auth::user()->name . 'Berhasil Login!');
+            return redirect('/siswa')->with('success',Auth::user()->name . ' Berhasil Login!');
         } else {
             return redirect('/sesi')->withErrors('Username atau Password salah!');
         }
